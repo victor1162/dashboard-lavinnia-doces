@@ -1,0 +1,138 @@
+#area-conteudo-principal-produtos {
+  padding: 40px 25px 40px 25px;
+}
+
+.area-dos-produtos {
+  border: 2px solid #ff6cba;
+  border-radius: 8px 8px 0px 0px;
+  margin-bottom: 20px;
+}
+.produto-recuperado {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.quantidade-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 350px;
+  padding: 20px 0px;
+}
+.area-valor-recuperado {
+  background: #ff6cba;
+  padding: 0px 20px;
+  border-radius: 5px;
+}
+.area-valor-recuperado span {
+  font-size: 1.2em;
+  color: white;
+}
+
+.quantidade-buttons div {
+  padding: 5px 20px;
+  color: white;
+  border: 0px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.mais-detalhe {
+  height: 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 15px;
+  color: white;
+  background: #ff6cba;
+  cursor: pointer;
+}
+.mais-detalhe:hover {
+  background: #ff34a0;
+}
+
+.area-edit-quantidade {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px;
+  height: 20px;
+  background: #ff6cba;
+}
+.edit-quantidade input {
+  border: 0px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.area-button-edit button {
+  border: 1px solid white;
+  padding: 5px 10px;
+  color: white;
+  background: #ff6cba;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* remover tudo sim ou nao */
+#area-removerTudoSN {
+  top: 0px;
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background: rgba(34, 34, 34, 0.418);
+}
+.area-remover {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: white;
+  width: 400px;
+  height: 150px;
+}
+.area-button-fechar {
+  width: 97.5%;
+  text-align: right;
+  position: absolute;
+  top: 0px;
+  font-size: 1.2em;
+  padding-right: 10px;
+  background: #ff6cba;
+}
+.area-button-fechar span {
+  color: white;
+  cursor: pointer;
+}
+.area-button-fechar span:hover {
+  color: black;
+}
+
+.area-buttons-removerTudoSN {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+.btn-remover-tudo button,
+.btn-nao-remover button {
+  padding: 10px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.btn-remover-tudo button {
+  background: rgb(161, 3, 3);
+  color: white;
+}
+.btn-nao-remover button {
+  background: rgb(5, 131, 26);
+  color: white;
+}

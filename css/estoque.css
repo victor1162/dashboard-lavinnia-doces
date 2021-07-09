@@ -1,0 +1,61 @@
+#area-estoque {
+  padding: 40px 25px 40px 25px;
+}
+
+.formulario-estoque {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.formulario-estoque input {
+  padding: 8px 8px 8px 0px;
+  width: 20%;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 2px solid #ff6cba;
+}
+.formulario-estoque input:focus {
+  outline: 0;
+}
+.formulario-estoque button {
+  padding: 0px 15px;
+  border: none;
+  background: #ff6cba;
+  color: white;
+  cursor: pointer;
+}
+.formulario-estoque button:hover {
+  background: #ff34a0;
+}
+
+.tabela-info-titulo {
+  display: block;
+  padding: 10px 0px 10px 25px;
+  color: white;
+  background: #ff6cba;
+  font-size: 1.2em;
+}
+
+.area-tabela-info-estoque {
+  margin-bottom: 30px;
+}
+
+.table-estoque {
+  width: 100%;
+  border-bottom: 2px solid #ff6cba;
+  border-left: 2px solid #ff6cba;
+  border-right: 2px solid #ff6cba;
+  border-top: 0px solid #ff6cba;
+  overflow-x: scroll;
+}
+.table-estoque tr th,
+.table-estoque tr td {
+  text-align: center;
+}
+.table-estoque tr th {
+  padding: 8px;
+  background: #ff34a0;
+  color: white;
+  letter-spacing: 2px;
+}

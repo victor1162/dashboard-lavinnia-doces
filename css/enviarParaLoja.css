@@ -1,0 +1,30 @@
+.area-enviar-para-loja {
+  padding: 40px 25px 40px 25px;
+}
+.area-produtos-para-enviar {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 90px;
+  border: 2px solid #ff6cba;
+  border-radius: 8px 8px 0px 0px;
+  margin-bottom: 20px;
+}
+.buttons-enviarSN {
+  width: 170px;
+}
+.buttons-enviarSN div {
+  display: flex;
+  border: 1px solid rgb(0, 81, 255);
+}
+
+.buttons-enviarSN div button {
+  border: none;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 5px;
+  background: none;
+  cursor: pointer;
+}

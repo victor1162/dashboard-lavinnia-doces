@@ -1,0 +1,397 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: "Padauk", sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/*header******************************************************************/
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 3px solid #ff6cba;
+  padding: 10px 0px 10px 20px;
+}
+header nav a {
+  display: block;
+  text-decoration: none;
+  color: #ff6cba;
+  position: relative;
+}
+header nav a::before {
+  content: "";
+  bottom: 0px;
+  left: 0px;
+  width: 0%;
+  height: 2px;
+  background: #ff6cba;
+  position: absolute;
+  transition: 1s;
+}
+header nav a:hover::before {
+  content: "";
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: #ff6cba;
+  position: absolute;
+  transition: 1s;
+}
+
+#barrasMenu {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  padding: 3px;
+  border: 1px solid #ff6cba;
+  margin-right: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.barraMenu1,
+.barraMenu2,
+.barraMenu3 {
+  margin: 4px;
+  padding: 2px;
+  background: #ff6cba;
+  width: 30px;
+  border-radius: 5px;
+}
+/*  ****************************************************************************/
+#container {
+  border-bottom: 5px solid #ff6cba;
+  height: auto;
+}
+
+/*area selecione-inicial*******************************************************/
+#selecione-inicial {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-bottom: 3px solid #ff6cba;
+}
+.item-inicial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+  background-color: #ff6cba;
+  border: 1px solid #ff6cba;
+  border-radius: 5px;
+  width: 200px;
+  height: 110px;
+  cursor: pointer;
+}
+.item-inicial:hover {
+  box-shadow: 0px 0px 3px black;
+}
+.item-inicial:active {
+  background-color: #b7226a;
+}
+.item-inicial > i {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 2em;
+}
+.item-inicial span {
+  color: white;
+  text-transform: uppercase;
+}
+
+/**********adicionarProdutos**********************************************************/
+#area-adicionarProdutos {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  position: absolute;
+  background: #0000003f;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.container-background-adicionar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(180deg, #ffa1d3, white);
+  width: 700px;
+  height: 500px;
+  padding: 4px;
+  border-radius: 8px;
+}
+.container-form {
+  display: flex;
+  background: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+
+  /* removido quando clicar no produto que sera adicionado */
+  align-items: center;
+  justify-content: space-around;
+}
+
+.item-tipos {
+  display: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background: #ff6cba;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+.item-tipos:hover {
+  background-image: linear-gradient(150deg, #dd2c82, #ff6cba);
+  box-shadow: 0px 0px 4px black;
+}
+.item-tipos > span {
+  color: white;
+}
+
+/* formulario-produtos *****************************************************/
+#formulario-produtos {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#formulario-produtos > fieldset {
+  width: 95%;
+  height: 95%;
+  border: 2px solid #ff6cba;
+  border-radius: 8px;
+}
+#formulario-produtos legend {
+  padding: 0px 15px;
+  color: #ff6cba;
+}
+#titulo-produto {
+  background: #ff6cba;
+  margin-top: 50px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+#titulo-produto span {
+  color: white;
+  font-weight: 700;
+  font-size: 1.2em;
+  letter-spacing: 15px;
+}
+
+/* area-select ***************************************************************/
+#area-select {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+}
+#area-select select {
+  width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #ff6cba;
+}
+/* area-quantidade *************************************************************/
+#area-quantidade {
+  display: flex;
+  justify-content: center;
+}
+#area-quantidade label {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 0px 12px;
+  border: 1px solid #ff6cba;
+  border-radius: 8px;
+}
+#area-quantidade label:hover {
+  background: #ff6cba;
+  color: white;
+}
+#area-btn-outro-valor {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary-outro-valor {
+  display: inline-block;
+  font-size: 1.1em;
+  border: 1px solid rgb(26, 125, 253);
+  border-radius: 12px;
+  margin-top: 10px;
+  padding: 5px 8px;
+  color: white;
+  background: rgb(26, 125, 253);
+  cursor: pointer;
+}
+.btn-primary-outro-valor:hover {
+  background: #fff;
+  color: rgb(26, 125, 253);
+}
+
+/* area-valor **************************************************************/
+#area-valor {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.bg-valor {
+  background-color: #ff6cba;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+}
+#area-valor span {
+  font-size: 1.1em;
+}
+#area-valor input {
+  color: #ff34a0;
+  border: none;
+  border-radius: 8px;
+  padding: 3px;
+  margin: 0px 0px 0px 10px;
+  text-align: center;
+  width: 30px;
+}
+
+/* enviar-formulario ******************************************************* */
+#enviar-formulario {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.btn-voltar,
+.btn-fechar,
+#btn-submit-formulario {
+  border: none;
+  background: white;
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-voltar {
+  border: 1px solid rgb(26, 125, 253);
+  background: rgb(26, 125, 253);
+  color: white;
+}
+.btn-voltar:hover {
+  background: white;
+  color: rgb(26, 125, 253);
+}
+
+#btn-submit-formulario {
+  border: 1px solid #70a507;
+  background: #70a507;
+  color: white;
+}
+#btn-submit-formulario:hover {
+  background: white;
+  color: #70a507;
+}
+
+.btn-fechar {
+  border: 1px solid rgb(253, 47, 47);
+  background: rgb(253, 47, 47);
+  color: white;
+}
+.btn-fechar:hover {
+  background: white;
+  color: rgb(253, 47, 47);
+}
+
+/* container-cards-principais ******************************************************/
+#container-cards-principais {
+  padding: 10px 25px 10px 25px;
+}
+#container-cards-principais h3 {
+  color: rgb(90, 90, 90);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+#area-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  background-color: #2859fa;
+  border-radius: 8px;
+  color: white;
+  margin-top: 30px;
+  width: 250px;
+  height: 120px;
+  position: relative;
+  cursor: context-menu;
+}
+.titulo-card {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+.valor-card {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 50%;
+  font-size: 2em;
+}
+.area-btn-card {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0px;
+}
+.btn-card {
+  margin-right: 20px;
+  text-decoration: none;
+  color: black;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #2859fa;
+  background: white;
+  padding: 0px 10px;
+}
+
+/* area-conteudo-principal  ****************************************************/
+#area-conteudo-principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 25px 10px 25px;
+  height: 400px;
+  background-color: #9c9c9c94;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.desfoco {
+  position: absolute;
+  filter: blur(5px);
+  width: 100%;
+  height: 100%;
+}

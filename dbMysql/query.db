@@ -1,0 +1,61 @@
+*********************************** sem clientes *************************************
+create table tb_loja_estoque (
+	id int not null PRIMARY key AUTO_INCREMENT,
+   	loja_estoque varchar(25) not null
+);
+
+insert into tb_loja_estoque(loja_estoque)values('loja');
+insert into tb_loja_estoque(loja_estoque)values('estoque');
+
+create table tb_produtos(
+	id int not null PRIMARY KEY AUTO_INCREMENT,
+   	produto varchar(100) not null,
+    categoria varchar(50) not null,
+    quantidade int not null,
+    valor_produto float(4,2) not null,
+    id_estoque_loja int not null DEFAULT 1,
+    FOREIGN KEY (id_estoque_loja) REFERENCES tb_loja_estoque(id),
+    data_cadastro datetime not null DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+*********************************** atualizado com clientes *************************************
+create table tb_loja_estoque (
+	id int not null PRIMARY key AUTO_INCREMENT,
+   	loja_estoque varchar(25) not null
+);
+
+insert into tb_loja_estoque(loja_estoque)values('loja');
+insert into tb_loja_estoque(loja_estoque)values('estoque');
+
+create table tb_produtos(
+	id int not null PRIMARY KEY AUTO_INCREMENT,
+   	produto varchar(100) not null,
+    categoria varchar(50) not null,
+    quantidade int not null,
+    valor_produto float(5,2) not null,
+    id_estoque_loja int not null DEFAULT 1,
+    FOREIGN KEY (id_estoque_loja) REFERENCES tb_loja_estoque(id),
+    data_cadastro datetime not null DEFAULT CURRENT_TIMESTAMP
+);
+
+create table tb_cliente_ativo (
+	id int not null PRIMARY key AUTO_INCREMENT,
+   	ativo_usuario varchar(25) not null
+);
+
+insert into tb_cliente_ativo(ativo_usuario)values('ativo');
+insert into tb_cliente_ativo(ativo_usuario)values('inativo');
+
+create table tb_cliente_loja(
+	id int not null AUTO_INCREMENT PRIMARY KEY,
+    nome_usuario varchar(100) not null,
+    email_usuario varchar(200) not null,
+    senha_usuario varchar(32) not null,
+    cpf_usuario float(11),
+    sexo_usuario char(1),
+    id_ativo_usuario int not null default 1,
+    FOREIGN KEY (id_ativo_usuario) references tb_cliente_ativo (id)
+);
