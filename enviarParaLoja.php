@@ -76,11 +76,6 @@
 			<i class="bi bi-box-seam"></i>
 			<span>Estoque</span>
 		</div>
-
-		<div class="item-inicial"  onclick="selecionarRoute('caminho', 'controleDeEstoque')">
-			<i class="bi bi-ui-checks"></i>
-			<span>Controle do estoque</span>
-		</div>
 	</section>
 
     <!-- modal adicionar produtos -->

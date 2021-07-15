@@ -33,6 +33,57 @@
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/routes.js"></script>
 
+	<script>
+		function chamando(){
+			let url = 'http://localhost/Projeto-lavinnai-final/consultaResReq.php';
+
+			let xmlHttp = new XMLHttpRequest();
+			xmlHttp.open('GET', url);
+
+			xmlHttp.onreadystatechange = () => {
+				if(xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+					/* produtos */
+					let retorno = xmlHttp.responseText;
+					let Obj = JSON.parse(retorno);
+
+					let produtos = Obj.produtos;
+					let maxProduto = 150;
+					let porcentagem = 100;
+
+					let mediaPorc = porcentagem / maxProduto;
+
+					let resultado = mediaPorc * produtos;
+					
+					document.getElementById('barra-produtos').style.width = resultado + '%';
+					document.getElementById('valor-produto').innerHTML = produtos;
+					document.getElementById('limite-produtos').innerHTML = maxProduto;
+
+					// produtos loja
+					let noEstoque = Obj.estoque;
+					let mediaPorcEstoque = porcentagem / produtos;
+					let naLoja = Obj.loja;
+					let resultadoLoja = mediaPorcEstoque * naLoja;
+
+					document.getElementById('barra-na-loja').style.width = resultadoLoja + '%';
+					document.getElementById('na-loja').innerHTML = naLoja;
+					document.getElementById('no-estoque').innerHTML = produtos;
+
+
+					//produtos estoque
+					let produtosEstoque_total = mediaPorcEstoque * noEstoque;
+
+					document.getElementById('total-estoque').innerHTML = produtos;
+					document.getElementById('produtos-Estoque').style.width = produtosEstoque_total + '%';
+					document.getElementById('em-estoque').innerHTML = noEstoque;
+				}
+			}
+
+			xmlHttp.send();
+		}
+		 
+		chamando();
+
+	</script>
 </head>
 <body class="body">
 
@@ -67,11 +118,6 @@
 		<div class="item-inicial"  onclick="selecionarRoute('caminho', 'estoque')">
 			<i class="bi bi-box-seam"></i>
 			<span>Estoque</span>
-		</div>
-
-		<div class="item-inicial"  onclick="selecionarRoute('caminho', 'controleDeEstoque')">
-			<i class="bi bi-ui-checks"></i>
-			<span>Controle do estoque</span>
 		</div>
 	</section>
 
@@ -168,7 +214,7 @@
 		<!-- area-cards -->
 		<div id="area-cards">
 			<div class="cards" >
-				<span class="titulo-card">Total PRODUTOS</span>
+				<span class="titulo-card">PRODUTOS</span>
 				<span class="valor-card"><?= $somarProdutos[0]['total'] ?></span>
 				<span class="area-btn-card">
 					<a href="" class="btn-card">consultar</a>
@@ -176,15 +222,15 @@
 			</div>
 
 			<div class="cards" style="background: rgb(0, 209, 122);">
-				<span class="titulo-card">Produtos na LOJA</span>
-				<span class="valor-card">0</span>
+				<span class="titulo-card">NA LOJA</span>
+				<span class="valor-card"><?= $produtoEmLoja[0]->loja ?></span>
 				<span class="area-btn-card">
 					<a href="" class="btn-card" style="border-bottom: 1px solid rgb(0, 209, 122);">consultar</a>
 				</span>
 			</div>
 
 			<div class="cards" style="background: rgb(255, 54, 54);">
-				<span class="titulo-card">Projeção de FATURAMENTO</span>
+				<span class="titulo-card">FATURAMENTO</span>
 				<span style=" display: flex; align-items: center;justify-content: space-around; font-size: 1.9em; height: 50%;">R$ <span class="valor-card" style="font-size: 1.0em;"><?= $calcularFaturamento[0]['total'] ?></span></span>
 				<span class="area-btn-card">
 					<a href="" class="btn-card" style="border-bottom: 1px solid rgb(255, 54, 54);">consultar</a>
@@ -192,7 +238,7 @@
 			</div>
 
 			<div class="cards" style="background: rgba(46, 46, 46, 0.438);">
-				<span class="titulo-card">Vendas REALIZADAS</span>
+				<span class="titulo-card">VENDAS REALIZADAS</span>
 				<span style=" display: flex; align-items: center;justify-content: space-around; font-size: 1.9em; height: 50%;">R$ <span class="valor-card" style="font-size: 1.0em;">0,00</span></span>
 				<span class="area-btn-card">
 					<a href="#" class="btn-card" style="cursor: context-menu; border-bottom: 1px solid rgba(46, 46, 46, 0.438);">indisponivel</a>
@@ -203,8 +249,57 @@
 	</section>
 
 	<section id="area-conteudo-principal">
+		
+		<div class="container-info-estoque">
+			<h3 >Informações do sistema </h3>
+			<hr>
+			<div class="area-info-estoque">
+				<div class="relatorio">
+					<span>Produtos</span>
+					<div class="area-barra-progresso">
+						<div class="barra-progresso-produtos" id="barra-produtos"></div>
 
-		Não tem solicitações...
+						<div class="detalhe">
+							<span>Produtos: <span id="valor-produto">0</span> de <span id="limite-produtos">0</span></span>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="relatorio">
+					<span>Produtos loja</span>
+					<div class="area-barra-progresso">
+						<div class="barra-progresso-loja" id="barra-na-loja"></div>
+
+						<div class="detalhe">
+							<span>Loja: <span id="na-loja">0</span> de <span id="no-estoque">0</span></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="relatorio">
+					<span>Produtos faturamento</span>
+					<div class="area-barra-progresso">
+						<div class="barra-progresso-faturamento"></div>
+
+						<div class="detalhe">
+							<span>Faturamento: 0 de 0</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="relatorio">
+					<span>Produtos estoque</span>
+					<div class="area-barra-progresso">
+						<div class="barra-progresso-estoque" id="produtos-Estoque"></div>
+
+						<div class="detalhe">
+							<span>Estoque: <span id="em-estoque"></span> de <span id="total-estoque"></span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</section>
 	

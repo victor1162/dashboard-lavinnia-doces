@@ -77,11 +77,6 @@
 			<i class="bi bi-box-seam"></i>
 			<span>Estoque</span>
 		</div>
-
-		<div class="item-inicial"  onclick="selecionarRoute('caminho', 'controleDeEstoque')">
-			<i class="bi bi-ui-checks"></i>
-			<span>Controle do estoque</span>
-		</div>
 	</section>
 
     <!-- modal adicionar produtos -->
@@ -172,9 +167,9 @@
     <section id="area-estoque">
 
         <div class="container-area-estoque">
-            <form action="" class="formulario-estoque">
-                <input type="text" name="" placeholder="Pesquisar produto">
-                <button><i class="bi bi-search"></i></button>
+            <form method="post" action="estoque.php?acao=recuperar&acao=pesquisar" class="formulario-estoque">
+                <input type="text" name="pesquisar" placeholder="Pesquisar produto">
+                <button type="submit"><i class="bi bi-search"></i></button>
             </form>
 		<?php foreach ($recuperado as $indice => $recuperado){ ?>
             <div class="area-tabela-info-estoque" style="overflow-x:auto;">

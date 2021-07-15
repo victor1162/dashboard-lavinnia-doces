@@ -79,11 +79,6 @@
 			<i class="bi bi-box-seam"></i>
 			<span>Estoque</span>
 		</div>
-
-		<div class="item-inicial"  onclick="selecionarRoute('caminho', 'controleDeEstoque')">
-			<i class="bi bi-ui-checks"></i>
-			<span>Controle do estoque</span>
-		</div>
 	</section>
 
     <!-- modal adicionar produtos -->
@@ -178,80 +173,28 @@
                 <fieldset>
                     <legend>Controle estoque</legend>
 
-                    <div class="div-controle-de-estoque">
-                        <span>Todos os produtos pode ser vendidos?</span>
-                        <div class="divs-label-controle">
-                            <label for="0001">
-                                <input type="radio" name="vendidos-S-N" value="Sim" id="0001">
-                                <span>Sim</span>
-                            </label>
-                            <label for="0002">
-                                <input type="radio" name="vendidos-S-N" value="Nao" id="0002">
-                                <span>Não</span>
-                            </label>
-                        </div>
-                    </div>
+					<div class="conatiner-controller">
+						<div>
+							<span>Adicionar na loja</span>
 
-                    <div class="div-controle-de-estoque">
-                        <span>Pode adicionar produtos no estoque?</span>
-                        <div class="divs-label-controle">
-                            <label for="0003">
-                                <input type="radio" name="estoque-S-N" value="Sim" id="0003">
-                                <span>Sim</span>
-                            </label>
+							<div>
+								<span>Sim</span>
+								<span>Não</span>
+							</div>
+						</div>
 
-                            <label for="0004">
-                                <input type="radio" name="estoque-S-N" value="Nao" id="0004">
-                                <span>Não</span>
-                            </label>
-                        </div>
-                    </div>
+						<div>
+							<span></span>
 
-                    <div class="div-controle-de-estoque">
-                        <span>Enviar produto para loja ?</span>
-                        <div class="divs-label-controle">
-                            <label for="0005">
-                                <input type="radio" name="enviar-loja-S-N" value="Sim" id="0005">
-                                <span>Sim</span>
-                            </label>
+							<div>
+								<span>Sim</span>
+								<span>Não</span>
+							</div>
+						</div>
 
-                            <label for="0006">
-                                <input type="radio" name="enviar-loja-S-N" value="Nao" id="0006">
-                                <span>Não</span>
-                            </label>
-                        </div>
-                    </div>
 
-                    <div class="div-controle-de-estoque">
-                        <span>mudar tema do sistema ?</span>
-                        <div class="divs-label-controle">
-                            <label for="0007">
-                                <input type="radio" name="background-sistema" value="padrao" id="0007">
-                                <span>rose(padrao)</span>
-                            </label>
-                            |
-                            <label for="0008">
-                                <input type="radio" name="background-sistema" value="Dark" id="0008">
-                                <span>Dark</span>
-                            </label>
-                            |
-                            <label for="0009">
-                                <input type="radio" name="background-sistema" value="margento" id="0009">
-                                <span>margento</span>
-                            </label>
-                            |
-                            <label for="0010">
-                                <input type="radio" name="background-sistema" value="gray" id="0010">
-                                <span>gray</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="area-button-controle">
-                        <button>Salvar</button>
-                    </div>
+					</div>
                 </fieldset>
-                
             </form>
 
         </div>

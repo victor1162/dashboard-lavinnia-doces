@@ -28,6 +28,7 @@ class ProdutoServices{
 
         $stmt->execute();
     }
+    
         //recuperar produtos
     public function  recuperar(){
         $query = '
@@ -36,6 +37,7 @@ class ProdutoServices{
             from
                 tb_produtos as tb
                 left join tb_loja_estoque as l on (tb.id_estoque_loja = l.id)
+                order by tb.id desc;
         ';
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();
@@ -55,10 +57,7 @@ class ProdutoServices{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function calcularProdutosLoja(){
-
-    }
-        //calcular faturamento antes de ser vendido
+    //calcular faturamento antes de ser vendido
     public function calcularFaturamento(){
         $query = '
             select
@@ -73,7 +72,14 @@ class ProdutoServices{
     }
     
     public function pesquisar(){
+        $query = '
+        select * from tb_produtos where produto like :pesquisar;
+        ';
 
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindValue(':pesquisar', '%' . $this->produto->__get('pesquisar') . '%');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function decrementarUm(){
@@ -113,13 +119,13 @@ class ProdutoServices{
     public function incrementarUm(){
         //Modificar o tipo de dados e calcular valor que foi recuperado do Banco de dados
         //dividir valor do produto pela quantidade antes de adicionar +1 a quantidade
-        $divisãoQV = intval($this->produto->valor_produto) / intval($this->produto->quantidade);
+        $divisãoVQ = intval($this->produto->valor_produto) / intval($this->produto->quantidade);
 
         //adicionando +1 a quantidade
         $quantidadeAtualizado = $this->produto->quantidade + 1;
         $idProdutos = $this->produto->id;
 
-        $totalCalculado = $quantidadeAtualizado * $divisãoQV;
+        $totalCalculado = $quantidadeAtualizado * $divisãoVQ;
 
         $query = '
             update tb_produtos set quantidade = :atualizado where id = :id;
@@ -169,6 +175,56 @@ class ProdutoServices{
         $stmt->bindValue(':id_estoque_loja', $atualizarEstoqueLoja);
         $stmt->bindValue(':id', $this->produto->id);
         $stmt->execute();
+    }
+
+    public function produtoEmLoja(){
+
+        $query = '
+            SELECT COUNT(*) as loja FROM tb_produtos WHERE id_estoque_loja = 2;
+        ';
+
+        $stmt = $this->conexao->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function editar(){
+        $divisãoVQ = intval($this->produto->valor_produto) / intval($this->produto->quantidade);
+        $quantida = $_POST['quantidade'];
+        $valor_produto = $_POST['valor_produto'];
+        $id = $_GET['id'];
+        $total = $divisãoVQ * $quantida;
+        
+
+        $query = '
+            update tb_produtos set quantidade = :quantidade where id = :id;
+            update tb_produtos set valor_produto = :valor_produto where id = :id;
+        ';
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindValue(':quantidade', $quantida);
+        $stmt->bindValue(':valor_produto', $total);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
+
+    public function naLoja(){
+        $query = '
+            SELECT sum(quantidade) as loja FROM tb_produtos WHERE id_estoque_loja = 2;
+        ';
+
+        $stmt = $this->conexao->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function emEstoque(){
+        $query = '
+            SELECT sum(quantidade) as estoque FROM tb_produtos where id_estoque_loja = 1;
+        ';
+        
+        $stmt = $this->conexao->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }
 

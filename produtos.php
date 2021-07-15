@@ -75,11 +75,6 @@
 			<i class="bi bi-box-seam"></i>
 			<span>Estoque</span>
 		</div>
-
-		<div class="item-inicial"  onclick="selecionarRoute('caminho', 'controleDeEstoque')">
-			<i class="bi bi-ui-checks"></i>
-			<span>Controle do estoque</span>
-		</div>
 	</section>
 
     <!-- modal adicionar produtos -->
@@ -188,7 +183,7 @@
 					</div>
 				</div>
 				
-				<form id="" class="area-edit-quantidade form-detalhe_<?= $dados->id ?>" style="display: none"> <!-- mesmo valor php -->
+				<form method="post" action="produtos.php?acao=editar&id=<?= $dados->id ?>" class="area-edit-quantidade form-detalhe_<?= $dados->id ?>" style="display: none"> <!-- mesmo valor php -->
 					<div class="edit-quantidade">
 						<input type="number" name="quantidade" placeholder="Editar quantidade">
 					</div>

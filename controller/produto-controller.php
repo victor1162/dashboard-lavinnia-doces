@@ -18,7 +18,24 @@
 
     $somarProdutos = $produtoServices->somarProdutos();
     $calcularFaturamento = $produtoServices->calcularFaturamento();
+    $produtoEmLoja = $produtoServices->naLoja();
+    
+    function produtosEstoque(){
+        $produto = new Produtos();
+        $conexao = new Conexao();
+        $produtoServices = new ProdutoServices($conexao, $produto);
+        $somarProdutos = $produtoServices->somarProdutos();
+        $produtoEmLoja = $produtoServices->naLoja();
+        $emEstoque = $produtoServices->emEstoque();
 
+        if($emEstoque[0]->estoque == ''){
+            $emEstoque[0]->estoque = 0;
+        }
+
+        $objetoArray = array('produtos' => $somarProdutos[0]['total'], 'loja' => $produtoEmLoja[0]->loja, 'estoque' => $emEstoque[0]->estoque);
+
+        return json_encode($objetoArray);
+    };
 
     //adicionar produto
     if($acao == 'adicionar'){
@@ -43,11 +60,6 @@
         $conexao = new Conexao();
         $produtoServices = new ProdutoServices($conexao, $produto);
         $recuperado = $produtoServices->recuperar();
-
-
-        // echo "<pre>";
-        // print_r($recuperado);
-        // echo "</pre>";
 
     }else if($acao == 'removerTudo'){
         // recuperar arquivos antes de excluir o selecionado
@@ -144,12 +156,37 @@
                 $produto->__set('id_estoque_loja', $enviarEstoqueLoja->id_estoque_loja);
             }
         }
-
-        // echo '<pre>';
-        // print_r($recuperado);
-        // echo '</pre>';
+        
         $recuperado = $produtoServices->enviarEstoque();
         header("Location: enviarParaLoja.php?acao=recuperar");
+    }else if($acao == 'pesquisar'){
+        $produto = new Produtos();
+        $conexao = new Conexao();
+        $produtoServices = new ProdutoServices($conexao, $produto);
+        $produto->__set('pesquisar', $_POST['pesquisar']);
+
+        $recuperado = $produtoServices->pesquisar();
+
+    }else if($acao == 'editar'){
+        $produto = new Produtos();
+        $conexao = new Conexao();
+        $produtoServices = new ProdutoServices($conexao, $produto);
+        $recuperado = $produtoServices->recuperar();
+  
+        foreach ($recuperado as $indice => $editar){
+            if($editar->id == $_GET['id']){
+                $produto = new Produtos();
+                $conexao = new Conexao();
+                $produtoServices = new ProdutoServices($conexao, $produto);
+                $produto->__set('id', $editar->id);
+                $produto->__set('quantidade', $editar->quantidade);
+                $produto->__set('valor_produto', $editar->valor_produto);
+            }
+        }
+
+        $produtoServices->editar();
+
+        header("Location: produtos.php?acao=recuperar");
     }
 
 

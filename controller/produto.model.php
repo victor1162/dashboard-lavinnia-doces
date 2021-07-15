@@ -8,6 +8,7 @@ class Produtos{
     private $quantidade; #quantidade
     private $valor_produto; #valor produto
     private $id_estoque_loja;
+    private $pesquisar;
 
     //valor do parametros a ser recuperado com __get (atributo)
     public function __get($atributo){
@@ -18,7 +19,6 @@ class Produtos{
     public function __set($atributo, $valor){
         $this->$atributo = $valor;
     }
-
 }
 
 ?>
